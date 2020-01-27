@@ -1,4 +1,4 @@
-package cipher;
+package panels;
 
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
@@ -13,7 +13,7 @@ import javax.swing.JTextField;
 import javax.swing.border.Border;
 
 @SuppressWarnings("serial")
-class ComboBoxPanel extends JPanel {
+public class ComboBoxPanel extends JPanel {
 
 	private final String []CIPHERS = {"Caesar's Cipher", "ROT13", "Beaufort Cipher", "Autokey Cipher"};
 	@SuppressWarnings("rawtypes")

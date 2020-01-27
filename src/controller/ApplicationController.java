@@ -1,9 +1,13 @@
-package cipher;
+package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JComboBox;
+
+import frame.MyFrame;
+import panels.ComboBoxPanel;
+import panels.TextPanel;
 
 /**Controller of the entire application.
  * Here is the ActionListener implementation for the ComboBox in the left panel.
@@ -34,12 +38,18 @@ public class ApplicationController{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				//Se vede sursa evenimentului si se face cast spre JComboBox
+				/*
+				 * Take the event's source and cast to combobox
+				 */
 				JComboBox c = (JComboBox) e.getSource();
-				//Apoi, se preia din sursa itemul selectat si se face cast la String(avem nevoie de nume)
+				
+				/*
+				 * Get the selected index's name
+				 * Based on the name, the function returns an algorithm
+				 * Acts like a factory design pattern
+				 */
 				String selected = c.getSelectedItem().toString();
 				
-				//Daca itemul este Cifrul lui Cezar, butonului Execute i se atribuie un ActionListener care executa algoritmul
 				if(selected.equalsIgnoreCase("Caesar's Cipher")) {
 					frame.removeExecuteButtonListener();
 					frame.addExecuteButtonListener(new CaesarsCipher());
@@ -80,7 +90,6 @@ public class ApplicationController{
 							text[i] = (char)(((int)text[i] + offset - 97) % 26 + 97);
 						}
 					}
-					
 					frame.setOutputText(new String(text));
 			 } catch(NumberFormatException exception) {
 				 frame.setOutputText("Incorrect value for offset, need a numerical value.");

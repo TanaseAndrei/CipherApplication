@@ -1,9 +1,13 @@
-package cipher;
+package main;
 
-import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
+
+import controller.ApplicationController;
+import frame.MyFrame;
+import panels.ComboBoxPanel;
+import panels.TextPanel;
 
 public class ApplicationPoint {
 
@@ -16,7 +20,6 @@ public class ApplicationPoint {
 				MyFrame frame = new MyFrame("Cipher");
 				ComboBoxPanel leftPanel = new ComboBoxPanel();
 				TextPanel rightPanel = new TextPanel();
-				JOptionPane.showMessageDialog(frame, "Welcome to my application, I hope you will like it, you, the one you are trying this.");
 				
 				@SuppressWarnings("unused")
 				ApplicationController controller = new ApplicationController(frame,leftPanel,rightPanel);

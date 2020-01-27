@@ -1,13 +1,19 @@
-package cipher;
+package frame;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
+import panels.ComboBoxPanel;
+import panels.TextPanel;
 
 @SuppressWarnings("serial")
-class MyFrame extends JFrame {
+public class MyFrame extends JFrame {
 	
 	private JButton executeButton;
 	private ComboBoxPanel leftPanel;
@@ -17,23 +23,45 @@ class MyFrame extends JFrame {
 		
 		super(title);
 		
-		//Initiate the frame
-		initFrame();
-		//Initiate the button that need to be pressed to execute a cipher
-		initButton();
+		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+		double width = dim.getWidth();
+		double height = dim.getHeight();
 		
-		//Init the panels
-		initPanel();
+		if(!(width == 1920) || !(height == 1080)) {
+			JOptionPane.showMessageDialog(this, "The resolution must be 1920x1080!", "Wrong resolution", JOptionPane.WARNING_MESSAGE);
+		} else {
 		
-		//Pack everything together;
-		packing();
+			//Initiate the frame
+			initFrame();
+			
+			//Initiate the button that need to be pressed to execute a cipher
+			initButton();
+			
+			//Init the panels
+			initPanel();
+			
+			//Pack everything together;
+			packing();
+			
+			//Make the frame visible to the user
+			setVisible(true);
+			
+		}
 		
-		//Make the frame visible to the user
-		setVisible(true);
 	}
 	
 	////////////////////INITIATING THE FRAME WITH ALL COMPONENTS////////////////////
+	
+	private void initFrame() {
 		
+		setSize(1280,720);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setLocationRelativeTo(null);
+		setLayout(new BorderLayout());
+		setResizable(false);
+		
+	}
+	
 	private void initPanel() {
 		
 		leftPanel = new ComboBoxPanel();
@@ -44,17 +72,6 @@ class MyFrame extends JFrame {
 	private void initButton() {
 		
 		executeButton = new JButton("Execute cipher");
-		
-	}
-	
-	
-	private void initFrame() {
-		
-		setSize(1280,720);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setLocationRelativeTo(null);
-		setLayout(new BorderLayout());
-		setResizable(false);
 		
 	}
 	
@@ -71,11 +88,11 @@ class MyFrame extends JFrame {
 	public String getInputText() {
 		return rightPanel.getInputText();
 	}
-	
-	
+		
 	////////////////////SETTERS////////////////////
 	
 	/////OUTPUT TEXT SETTER/////
+	
 	public void setOutputText(String text) {
 		rightPanel.setOutputText(text);
 	}
@@ -92,6 +109,7 @@ class MyFrame extends JFrame {
 	
 	
 	////////////////////UPDATE LEFT PANEL AFTER HIDING OFFSET////////////////////
+	
 	public void updateLeftPanel() {
 		leftPanel.updatePanel();
 	}
@@ -130,7 +148,5 @@ class MyFrame extends JFrame {
 			executeButton.removeActionListener(al);
 		}
 	}
-	
-	
-	
+
 }

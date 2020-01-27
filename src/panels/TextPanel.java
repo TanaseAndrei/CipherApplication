@@ -1,4 +1,4 @@
-package cipher;
+package panels;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -13,7 +13,7 @@ import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 
 @SuppressWarnings("serial")
-class TextPanel extends JPanel {
+public class TextPanel extends JPanel {
 
 	private JTextArea inputArea, outputArea;
 	private JScrollPane inputScroll, outputScroll;
@@ -95,12 +95,12 @@ class TextPanel extends JPanel {
 	private void initTextArea() {
 		
 		//Exact ce am spus mai jos, rows and columns.
-		inputArea = new JTextArea(10,88);
+		inputArea = new JTextArea(1,67);
 		Font font = inputArea.getFont();
 		float size = font.getSize() + 2.0f;
 		inputArea.setFont(font.deriveFont(size));
 		
-		outputArea = new JTextArea(10,88);
+		outputArea = new JTextArea(1,67);
 		outputArea.setEditable(false);
 		outputArea.setFont(font.deriveFont(size));
 		
